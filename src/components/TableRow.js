@@ -1,3 +1,5 @@
+import * as dateUtils from '../utils/dateUtils';
+
 function TableRow({
     _id,
     firstName,
@@ -18,7 +20,7 @@ function TableRow({
             <td>{lastName}</td>
             <td>{email}</td>
             <td>{phoneNumber}</td>
-            <td>{createdAt} fix it to -June 28, 2022</td>
+            <td>{dateUtils.formatDate(createdAt)}</td>
 
             <td className="actions">
                 <button className="btn edit-btn" title="Edit">

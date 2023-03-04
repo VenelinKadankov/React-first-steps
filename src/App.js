@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Pagination from './components/Pagination';
 import Search from './components/Search';
 import UserTable from './components/UserTable';
+import Loader from './components/Loader';
 
 import * as userService from './services/userService';
 
@@ -28,7 +29,8 @@ function App() {
       <main className="main">
         <section className="card users-container">
           <Search />
-          <UserTable users={users} />
+          {users.length === 0 ? <Loader /> : <UserTable users={users} />}
+          {/* <UserTable users={users} /> */}
           <button className="btn-add btn">Add new user</button>
           <Pagination />
         </section>

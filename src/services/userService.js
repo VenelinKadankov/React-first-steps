@@ -4,8 +4,6 @@ export const getAllUsers = async () => {
     const users = await fetch(baseUrl);
     const result = await users.json();
 
-    console.log(result.users);
-
     return result.users;
 }
 

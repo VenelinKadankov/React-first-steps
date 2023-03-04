@@ -1,3 +1,5 @@
+import * as dateUtils from '../utils/dateUtils';
+
 function UserDetails({ 
     address,
     _id,
@@ -45,8 +47,8 @@ function UserDetails({
                                     <strong> {`${address.country}, ${address.city}, ${address.street} ${address.streetNumber}`} </strong>
                                 </p>
 
-                                <p>Created on: <strong>{createdAt} - format it to - Wednesday, June 28, 2022</strong></p>
-                                <p>Modified on: <strong>{updatedAt} - format it to - Thursday, June 29, 2022</strong></p>
+                                <p>Created on: <strong>{dateUtils.formatDate(createdAt)}</strong></p>
+                                <p>Modified on: <strong>{dateUtils.formatDate(updatedAt)}</strong></p>
                             </div>
                         </div>
                     </div>

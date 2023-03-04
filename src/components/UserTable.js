@@ -1,14 +1,14 @@
 import TableRow from './TableRow';
 import UserDetails from './UserDetails';
+
 import * as userService from '../services/userService';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function UserTable({ users, }) {
     const [selectedUser, setSelectedUser] = useState(null);
 
     const onClickDetails = async (userId) => {
-        console.log(userId);
         const user = await userService.getUser(userId)
         setSelectedUser(user);
     }
@@ -19,6 +19,7 @@ function UserTable({ users, }) {
 
     return (
         <>
+            {/* {!users && <Loader />} */}
             {selectedUser && <UserDetails {...selectedUser} onClose={onClose} />}
             <div className="table-wrapper">
                 <table className="table">
