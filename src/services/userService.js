@@ -1,15 +1,17 @@
 const baseUrl = 'http://localhost:3005/api/users';
 
-export const GetAllUsers = async () => {
+export const getAllUsers = async () => {
     const users = await fetch(baseUrl);
-    const result = await users.json()
+    const result = await users.json();
 
-    return result;
+    console.log(result.users);
+
+    return result.users;
 }
 
-export const GetUser = async (id) => {
+export const getUser = async (id) => {
     const user = await fetch(baseUrl + `/${id}`);
     const result = await user.json();
     
-    return result;
+    return result.user;
 }

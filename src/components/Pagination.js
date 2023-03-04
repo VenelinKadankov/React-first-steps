@@ -1,4 +1,4 @@
-function Pagination() {
+function Pagination(props) {
     return (
         <div className="pagination position">
             <div className="limits">
