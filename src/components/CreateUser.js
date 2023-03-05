@@ -78,9 +78,7 @@ function CreateUser({
             },
         }
         
-        const userDb = await userService.createUser(createdUser, _id);
-
-        //console.log(userDb);
+        await userService.createUser(createdUser, _id);
 
         onClose();
     }

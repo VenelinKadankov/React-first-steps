@@ -22,7 +22,7 @@ export const createUser = async (user, _id = null) => {
     } else{
         method = 'post';
     }
-    
+
     const userRequest = await fetch(
         baseUrl, {
         method: method,
@@ -34,6 +34,16 @@ export const createUser = async (user, _id = null) => {
     });
 
     const result = await userRequest.json();
+
+    return result.user;
+}
+
+export const deleteUser = async (id) => {
+    const user = await fetch(baseUrl + `/${id}`,{
+        method: 'delete',
+    });
+    
+    const result = await user.json();
 
     return result.user;
 }
