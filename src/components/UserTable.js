@@ -4,23 +4,35 @@ import UserDetails from './UserDetails';
 import * as userService from '../services/userService';
 
 import { useState } from 'react';
+import CreateUser from './CreateUser';
 
 function UserTable({ users, }) {
     const [selectedUser, setSelectedUser] = useState(null);
+    const [editClicked, editClickedUser] = useState(false);
 
     const onClickDetails = async (userId) => {
         const user = await userService.getUser(userId)
         setSelectedUser(user);
     }
 
+
+    const onClickEdit = async (userId) => {
+        const user = await userService.getUser(userId);
+        
+        editClickedUser(true);
+        setSelectedUser(user);
+    }
+
     const onClose = () => {
+        editClickedUser(false);
         setSelectedUser(null);
     };
 
     return (
         <>
-            {/* {!users && <Loader />} */}
             {selectedUser && <UserDetails {...selectedUser} onClose={onClose} />}
+            {editClicked &&  <CreateUser {...selectedUser} onClose={onClose} />}
+            {/* {selectedUser && editClicked && <CreateUser {...selectedUser} onClose={onClose} isEdit={editClicked} />} */}
             <div className="table-wrapper">
                 <table className="table">
                     <thead>
@@ -78,7 +90,7 @@ function UserTable({ users, }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map(u => <TableRow key={u._id} {...u} onClickDetails={onClickDetails} />)}
+                        {users.map(u => <TableRow key={u._id} {...u} onClickDetails={onClickDetails} onClickEdit={onClickEdit} />)}
                     </tbody>
                 </table>
             </div>
